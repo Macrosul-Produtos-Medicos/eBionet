@@ -9,6 +9,10 @@
     <!-- ALPINE -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="shortcut icon" href="https://i.postimg.cc/W3rR3HK8/Icone-Bionet.png" type="image/x-icon">
+     <!-- SPLIDE CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/css/splide.min.css">
+     <!-- SPLIDE JS -->
+     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/js/splide.min.js"></script>
     <title>eBionet</title>
 </head>
 <body x-data="Data()">
@@ -17,7 +21,7 @@
         {% include "partials/header_mobile.html" %}
     </header>
 
-    <main class="min-h-screen">
+    <main class="min-h-screen overflow-x-hidden">
         {% block content %}
         {% endblock content %}
     </main>
@@ -26,7 +30,8 @@
         <a href="https://www.macrosul.com/">Copyright © 2024 Macrosul</a>
     </footer>
 
-    <script src="{% static 'js/data.js'%}"></script>
+    <script defer src="{% static 'js/carrossel.js' %}"></script>
+
     
 </body>
 </html>
