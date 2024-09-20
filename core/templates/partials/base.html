@@ -4,13 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TAILWIND  -->
     <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
-    <title>e-Bionet</title>
+    <!-- ALPINE -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="shortcut icon" href="https://i.postimg.cc/W3rR3HK8/Icone-Bionet.png" type="image/x-icon">
+    <title>eBionet</title>
 </head>
-<body>
-    <header class="bg-red-600">TESTE</header>
-    {% block content %}
-    {% endblock content %}
+<body x-data="Data()">
+    <header>
+        {% include "partials/header_desktop.html" %}
+        {% include "partials/header_mobile.html" %}
+    </header>
+
+    <main class="min-h-screen">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    
+    <footer class="bg-black flex justify-center items-center text-white h-[60px] text-sm">
+        <a href="https://www.macrosul.com/">Copyright © 2024 Macrosul</a>
+    </footer>
+
+    <script src="{% static 'js/data.js'%}"></script>
     
 </body>
 </html>
