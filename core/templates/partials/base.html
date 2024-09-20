@@ -1,12 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
     <title>e-Bionet</title>
 </head>
 <body>
-    <header>TESTE</header>
+    <header class="bg-red-600">TESTE</header>
     {% block content %}
     {% endblock content %}
     
