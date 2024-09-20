@@ -1,0 +1,52 @@
+<div class="bg-white h-[90px] w-full flex items-center">
+    <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
+        <div>
+            <a href="/">
+                <img src="https://i.postimg.cc/pr900hQd/Logo-Bionet.png" alt="Logo Bionet" class="w-28">
+            </a>
+        </div>
+
+        <div class="flex space-x-6 text-lg">
+            <div class="border-b p-2 text-blue-600 border-blue-600 transition duration-200">
+                <a href="/">Home</a>
+            </div>
+
+            <div @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false">
+                <button @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
+                    <p>Produtos</p>
+                </button>
+
+                <div x-show="menuProdutos" class="pt-[22px] absolute z-50">
+                    <div @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false"
+                    class="bg-[#0073BE] w-64 text-white rounded p-4 px-8 text-base space-y-1">
+                        <div class="hover:scale-105 transition duration-200">
+                            <a href="#">Eletrocardiógrafo</a>
+                        </div>
+                        <div class="hover:scale-105 transition duration-200">
+                            <a href="#">Medidor de Sinais Vitais</a>
+                        </div>
+                        <div class="hover:scale-105 transition duration-200">
+                            <a href="#">Monitor Fetal</a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            
+            
+            
+            <div class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
+                <a href="/">Suporte</a>
+            </div>
+
+            <div class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
+                <a href="/">Contato</a>
+            </div>
+
+
+            
+        </div>
+
+        
+    </div>
+</div>
