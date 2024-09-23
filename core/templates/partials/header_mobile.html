@@ -13,7 +13,7 @@
 </div>
 
 <!-- MENU MOBILE -->
-<div x-show="menuMobile" class="bg-black h-screen bg-opacity-50 fixed inset-0 w-full z-50 flex justify-end"
+<div x-cloak x-show="menuMobile" class="bg-black h-screen bg-opacity-50 fixed inset-0 w-full z-50 flex justify-end"
 x-transition:enter="transition ease-gentle duration-300"
 x-transition:enter-start="translate-x-full"
 x-transition:enter-end="translate-x-0"
@@ -46,7 +46,7 @@ x-transition:leave-end="translate-x-full">
                 </div>
             </div>
             
-            <div x-show="menuProdutos"
+            <div x-cloak x-show="menuProdutos"
             x-transition:enter="transition ease-out duration-200 transform origin-top"
             x-transition:enter-start="opacity-0 scale-y-0"
             x-transition:enter-end="opacity-40 scale-y-40"
