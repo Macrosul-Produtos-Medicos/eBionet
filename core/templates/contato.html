@@ -1,7 +1,64 @@
 {% extends "partials/base.html" %}
 {% load static %}
 {% block content %}
-CONTATO
+
+<div>
+    <img src="https://i.postimg.cc/y8w0YXNT/Banner-Contato-1700x350.png" alt="" class="mx-auto mt-0.5">
+</div>
+
+<div class="max-w-4xl mx-auto w-11/12 mt-20 pb-20 lg:pb-40">
+    <div class="space-y-7">
+        <h3 class="text-2xl text-blue-600">Como podemos ajudar você hoje?</h3>
+        <p class="text-xl">Por favor, selecione uma opção de contato abaixo e envie sua solicitação</p>
+    </div>
+
+    <div class="mt-6">
+        <form action="." class="space-y-4">
+            <div>
+                <label for="nome">Nome <span class="text-red-600">*</span></label>
+                <input type="text" name="nome" id="nome" class="w-full border-2 border-blue-600">
+            </div>
+            <div>
+                <label for="email">E-mail <span class="text-red-600">*</span></label>
+                <input type="text" name="email" id="email" class="w-full border-2 border-blue-600">
+            </div>
+
+            <div>
+                <label for="email">Selecione o assunto! <span class="text-red-600">*</span></label>
+                <select name="assunto" id="assunto" class="w-full border-2 border-blue-600">
+                    <option value="0">---</option>
+                    <option value="0">Orçamento</option>
+                    <option value="0">Suporte Técnico</option>
+                    <option value="0">Outros</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="mensagem">Mensagem</label>
+                <textarea name="mensagem" id="mensagem" class="w-full min-h-40 border-2 border-blue-600"></textarea>
+            </div>
+
+            <div>
+                <input type="file"class="hover:cursor-pointer w-full border border-2 border-blue-600 py-1.5 px-2" >
+            </div>
+
+            <div>
+                <button type="submit" class="bg-blue-600 px-4 py-2 text-white">
+                    Enviar
+                </button>
+            </div>
+           
+           
+            
+        </form>
+    </div>
+    
+</div>
+
+
+
+
+
 {% endblock content %}
 
 
