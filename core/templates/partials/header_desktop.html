@@ -7,25 +7,25 @@
         </div>
 
         <div class="flex space-x-6 text-lg">
-            <div class="border-b p-2 text-blue-600 border-blue-600 transition duration-200">
+            <div id="home" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
                 <a href="/">Home</a>
             </div>
 
             <div @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false">
-                <button @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
+                <button id="produtos" @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
                     <p>Produtos</p>
                 </button>
 
                 <div x-show="menuProdutos" class="pt-[22px] absolute z-50">
                     <div class="bg-[#0073BE] w-64 text-white rounded p-4 px-8 text-base space-y-1">
                         <div class="hover:scale-105 transition duration-200">
-                            <a href="#">Eletrocardiógrafo</a>
+                            <a href="{% url 'eletro' %}">Eletrocardiógrafo</a>
                         </div>
                         <div class="hover:scale-105 transition duration-200">
-                            <a href="#">Medidor de Sinais Vitais</a>
+                            <a href="{% url 'medidor' %}">Medidor de Sinais Vitais</a>
                         </div>
                         <div class="hover:scale-105 transition duration-200">
-                            <a href="#">Monitor Fetal</a>
+                            <a href="{% url 'monitor' %}">Monitor Fetal</a>
                         </div>
                     </div>
                    
@@ -34,12 +34,12 @@
             
             
             
-            <div class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
-                <a href="/">Suporte</a>
+            <div id="suporte" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
+                <a href="{% url 'suporte' %}">Suporte</a>
             </div>
 
-            <div class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
-                <a href="/">Contato</a>
+            <div id="contato" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
+                <a href="{% url 'contato' %}">Contato</a>
             </div>
 
 
