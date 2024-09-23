@@ -28,13 +28,13 @@ x-transition:leave-end="translate-x-full">
     </div>
     <div @click.away="menuMobile = false" class="bg-white h-full w-3/4">
         <div>
-            <a href="/" class="border-b flex items-center transition duration-200 bg-[#0073BE] border-gray-200 px-4 py-2 text-white">
+            <a id="homeMobile" href="/" class="border-b flex items-center transition duration-200 hover:bg-[#0073BE] border-gray-200 px-4 py-2 text-[#2fa5f3] hover:text-white">
                 Home
             </a>
         </div>
 
         <div @click.away="menuProdutos = false" @click="menuProdutos =! menuProdutos">
-            <div class="flex w-full hover:bg-[#0073BE] text-[#2fa5f3] hover:text-white">
+            <div id="produtosMobile" class="flex w-full hover:bg-[#0073BE] text-[#2fa5f3] hover:text-white">
                 <div class="w-full border-b flex justify-between items-center transition duration-200 border-gray-200 px-4 py-2 ">
                     <span>Produtos</span>
                 </div>
@@ -66,13 +66,13 @@ x-transition:leave-end="translate-x-full">
         </div>
 
         <div>
-            <a href="{% url 'suporte' %}" class="border-b flex items-center transition duration-200 hover:bg-[#0073BE] border-gray-200 px-4 py-2 text-[#2fa5f3] hover:text-white">
+            <a id="suporteMobile" href="{% url 'suporte' %}" class="border-b flex items-center transition duration-200 hover:bg-[#0073BE] border-gray-200 px-4 py-2 text-[#2fa5f3] hover:text-white">
                 Suporte
             </a>
         </div>
 
         <div>
-            <a href="{% url 'contato' %}" class="border-b flex items-center transition duration-200 hover:bg-[#0073BE] border-gray-200 px-4 py-2 text-[#2fa5f3] hover:text-white">
+            <a id="contatoMobile" href="{% url 'contato' %}" class="border-b flex items-center transition duration-200 hover:bg-[#0073BE] border-gray-200 px-4 py-2 text-[#2fa5f3] hover:text-white">
                 Contato
             </a>
         </div>
