@@ -3,7 +3,6 @@ const produtos = document.querySelector('#produtos')
 const suporte = document.querySelector('#suporte')
 const contato = document.querySelector('#contato')
 
-console.log("URL atual: " + window.location.href.split('/')[3]);
 const url = window.location.href.split('/')[3];
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -46,3 +45,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+
+const homeMobile = document.querySelector('#homeMobile')
+const produtosMobile = document.querySelector('#produtosMobile')
+const suporteMobile = document.querySelector('#suporteMobile')
+const contatoMobile = document.querySelector('#contatoMobile')
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    if(url == 'produtos'){
+        produtosMobile.classList.add('bg-[#0073BE]','text-white')
+        produtosMobile.classList.remove('text-[#2fa5f3]')
+    }
+    else{
+        produtosMobile.classList.remove('bg-[#0073BE]','text-white')
+        produtosMobile.classList.add('text-[#2fa5f3]')
+    }
+
+
+    if(url == 'contato'){
+        contatoMobile.classList.add('bg-[#0073BE]','text-white')
+        contatoMobile.classList.remove('text-[#2fa5f3]')
+    }
+    else{
+        contatoMobile.classList.remove('bg-[#0073BE]','text-white')
+        contatoMobile.classList.add('text-[#2fa5f3]')
+    }
+
+
+    if(url == 'suporte'){
+        suporteMobile.classList.add('bg-[#0073BE]','text-white')
+        suporteMobile.classList.remove('text-[#2fa5f3]')
+    }
+    else{
+        suporteMobile.classList.remove('bg-[#0073BE]','text-white')
+        suporteMobile.classList.add('text-[#2fa5f3]')
+    }
+
+    if(url == ''){
+        homeMobile.classList.add('bg-[#0073BE]','text-white')
+        homeMobile.classList.remove('text-[#2fa5f3]')
+    }
+    else{
+        homeMobile.classList.remove('bg-[#0073BE]','text-white')
+        homeMobile.classList.add('text-[#2fa5f3]')
+    }
+});
