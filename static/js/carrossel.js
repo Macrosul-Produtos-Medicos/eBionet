@@ -1,8 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    inicializarCarrossel('#banner');
-
-});
-
 function inicializarCarrossel(IdCarrossel) {
     var element = document.querySelector(IdCarrossel);
     if (!element) {
