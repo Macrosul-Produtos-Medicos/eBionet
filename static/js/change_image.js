@@ -1,9 +1,15 @@
 const imgCardio7 = document.querySelector('#img-cardio-7')
 const imgCardioCare2000 = document.querySelector('#img-cardio-care-2000')
 const imgCardiotouch3000 = document.querySelector('#img-cardiotouch-3000')
+
 const bm1 = document.querySelector('#img-bm1')
 const bm3 = document.querySelector('#img-bm3')
 const bm5 = document.querySelector('#img-bm5')
+
+const fc700 = document.querySelector('#img-fc-700')
+const fc1400 = document.querySelector('#img-fc-1400')
+
+
 
 
 function trocaDeImagem(variavel, img1, img2) {
