@@ -15,6 +15,52 @@
      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/js/splide.min.js"></script>
     <title>eBionet</title>
 </head>
+<style>
+    [x-cloak] {
+        display: none !important;
+    }
+    #element::-webkit-scrollbar {
+        width: 3px;
+        height: 5px; /* A altura só é vista quando a rolagem é horizontal */
+    }
+
+    #element::-webkit-scrollbar-track {
+        background: rgb(201, 197, 197);
+        padding: 2px;
+    }
+
+    #element::-webkit-scrollbar-thumb {
+        background-color: #000000;
+        border-radius: 20px;
+    }
+
+    /* Estilo das setas de navegação */
+    .splide__arrow {
+        background-color: rgba(255, 255, 255, 0.0); /* Fundo branco com transparência */
+        color: #000; /* Cor do texto preta */
+        width: 50px; /* Largura da seta */
+        height: 100%; /* Altura de 100% */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        transition: background-color 0.3s ease; 
+    }
+    .splide__arrow:hover{
+        background-color: rgba(180, 180, 180, 0.3); /* Fundo branco com transparência */
+    
+    }
+
+    /* Ajustar a posição das setas */
+    .splide__arrow--prev {
+        left: 0; /* Distância da seta anterior à esquerda */
+    }
+
+    .splide__arrow--next {
+        right: 0;
+    }
+
+</style>
 <body x-data="Data()">
     <header>
         {% include "partials/header_desktop.html" %}
