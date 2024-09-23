@@ -45,7 +45,7 @@
 
             <div>
                 <button>
-                    <a href="#" class="border rounded text-sm px-3 py-1.5 text-[#2fa5f3] hover:text-white border-[#248dd3] hover:bg-[#2fa5f3] transition duration-200 flex items-center">
+                    <a href="{% url 'medidor' %}" class="border rounded text-sm px-3 py-1.5 text-[#2fa5f3] hover:text-white border-[#248dd3] hover:bg-[#2fa5f3] transition duration-200 flex items-center">
                         Saiba mais...
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 stroke-[2px]">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -77,7 +77,7 @@
 
             <div>
                 <button>
-                    <a href="#" class="border rounded text-sm px-3 py-1.5 text-[#2fa5f3] hover:text-white border-[#248dd3] hover:bg-[#2fa5f3] transition duration-200 flex items-center">
+                    <a href="{% url 'eletro' %}" class="border rounded text-sm px-3 py-1.5 text-[#2fa5f3] hover:text-white border-[#248dd3] hover:bg-[#2fa5f3] transition duration-200 flex items-center">
                         Saiba mais...
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 stroke-[2px]">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -101,7 +101,7 @@
 
             <div>
                 <button>
-                    <a href="#" class="border rounded text-sm px-3 py-1.5 text-[#2fa5f3] hover:text-white border-[#248dd3] hover:bg-[#2fa5f3] transition duration-200 flex items-center">
+                    <a href="{% url 'monitor' %}" class="border rounded text-sm px-3 py-1.5 text-[#2fa5f3] hover:text-white border-[#248dd3] hover:bg-[#2fa5f3] transition duration-200 flex items-center">
                         Saiba mais...
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 stroke-[2px]">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -118,13 +118,10 @@
 </div>
 
 
-
-
-
-
-
-
 <script src="{% static 'js/carrossel.js' %}"></script>
+<script>
+    inicializarCarrossel('#banner')
+</script>
 
 
 
