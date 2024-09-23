@@ -52,9 +52,6 @@ const suporteMobile = document.querySelector('#suporteMobile')
 const contatoMobile = document.querySelector('#contatoMobile')
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     if(url == 'produtos'){
         produtosMobile.classList.add('bg-[#0073BE]','text-white')
