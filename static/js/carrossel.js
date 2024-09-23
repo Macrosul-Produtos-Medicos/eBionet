@@ -30,4 +30,14 @@ function inicializarCarrossel(IdCarrossel) {
     });
 
     splide.mount();
+
+    
 }
+
+// REMOVE AS "BOLINHAS" DE PAGINAÇÃO DO CARROSSEL 
+document.addEventListener('DOMContentLoaded', function() {
+    var paginationElements = document.querySelectorAll('.splide__pagination');
+    paginationElements.forEach(function(element) {
+        element.remove();
+    });
+});
