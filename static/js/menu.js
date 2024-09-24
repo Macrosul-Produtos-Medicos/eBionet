@@ -5,8 +5,6 @@ function menuProdutos(){
     }
 }
 
-
-
 const home = document.querySelector('#home')
 const produtos = document.querySelector('#produtos')
 const suporte = document.querySelector('#suporte')
