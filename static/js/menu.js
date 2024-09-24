@@ -1,3 +1,12 @@
+function menuProdutos(){
+    return{
+        menuProdutos: false,
+        menuMobile: false,
+    }
+}
+
+
+
 const home = document.querySelector('#home')
 const produtos = document.querySelector('#produtos')
 const suporte = document.querySelector('#suporte')
