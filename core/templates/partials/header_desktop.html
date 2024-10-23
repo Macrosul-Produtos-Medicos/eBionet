@@ -1,14 +1,14 @@
-<div class="bg-white hidden lg:flex h-[90px] w-full items-center">
+<div class="bg-white hidden lg:flex h-[85px] w-full items-center">
     <div class="max-w-7xl w-full mx-auto flex items-center justify-between px-6">
-        <div>
-            <a href="/">
+        <div class="py-3">
+            <a href="https://ebionet.com.br/">
                 <img src="/static/img/core/Logo-Bionet.png" alt="Logo Bionet" class="w-28">
             </a>
         </div>
 
-        <div class="flex space-x-6 text-lg">
+        <div class="flex space-x-6 text-base roboto-regular mt-2 pr-8 py-1">
             <div id="home" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
-                <a href="/">Home</a>
+                <a href="https://ebionet.com.br/">Home</a>
             </div>
 
             <div @mouseover="menuProdutos = true" @mouseleave="menuProdutos = false">
@@ -16,19 +16,18 @@
                     <p>Produtos</p>
                 </button>
 
-                <div x-cloak x-show="menuProdutos" class="pt-[22px] absolute z-50">
+                <div x-cloak x-show="menuProdutos" class="pt-[18px] absolute z-50">
                     <div class="bg-[#0073BE] w-64 text-white rounded p-4 px-8 text-base space-y-1">
                         <div class="hover:scale-105 transition duration-200">
-                            <a href="{% url 'eletro' %}">Eletrocardiógrafo</a>
+                            <a href="https://ebionet.com.br/eletrocardiografo/">Eletrocardiógrafo</a>
                         </div>
                         <div class="hover:scale-105 transition duration-200">
-                            <a href="{% url 'medidor' %}">Medidor de Sinais Vitais</a>
+                            <a href="https://ebionet.com.br/monitor/">Medidor de Sinais Vitais</a>
                         </div>
                         <div class="hover:scale-105 transition duration-200">
-                            <a href="{% url 'monitor' %}">Monitor Fetal</a>
+                            <a href="https://ebionet.com.br/fetal/">Monitor Fetal</a>
                         </div>
                     </div>
-                   
                 </div>
             </div>
             
@@ -39,13 +38,9 @@
             </div>
 
             <div id="contato" class="border-b p-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition duration-200">
-                <a href="{% url 'contato' %}">Contato</a>
+                <a href="https://ebionet.com.br/contato/">Contato</a>
             </div>
 
-
-            
         </div>
-
-        
     </div>
 </div>
