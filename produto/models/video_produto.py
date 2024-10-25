@@ -7,6 +7,7 @@ from .produto import Produto
 
 class VideoProduto(BaseModel):
     video_url = models.URLField(max_length=256, null=True, blank=True)
+    label = models.CharField(max_length=128, null=True, blank=True)
     produto = models.ForeignKey(
         Produto,
         on_delete=models.CASCADE,
