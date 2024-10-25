@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'tinymce',
+    
     'core',
     'produto',
 ]
@@ -120,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
 MEDIA_URL = '/media/'
@@ -137,3 +140,16 @@ if not DEBUG:
 SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', cast=bool)
 SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', cast=bool)
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', cast=bool)
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 450,
+    'width': 900,
+    'plugins': 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime'
+    'media table help wordcount',
+    'toolbar': 'undo redo | styleselect | fontsize fontfamily | bold italic underline forecolor backcolor | '
+    'alignleft aligncenter alignright alignjustify | '
+    'bullist numlist outdent indent | link image media',
+}
+
+TINYMCE_JS_URL = STATIC_URL + 'tinymce/tinymce.min.js'
