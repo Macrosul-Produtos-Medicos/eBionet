@@ -1,0 +1,395 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/produto/suporte.js'%}"></script>
+{% endblock js %}
+
+{% block content %}
+
+<div>
+    <img src="static/img/suporte/Banner-Suporte-1-1700x350.png" alt="" class="mx-auto mt-0.5 lg:mt-0 lg:max-w-7xl">
+</div>
+
+<div x-data="Suporte()" class="w-11/12 max-w-7xl mx-auto mt-20 pb-20">
+    <h2 class="text-5xl text-blue-600">Software</h2>
+    <p class="mt-2">Manual e vídeo de configuração.</p>
+
+    <!-- SOFTWARE  -->
+
+    {% for model in models %}
+    <div class="border-t-2 border-blue-600 py-10 lg:py-16 flex">
+        <div class="w-full">
+            <h3 class="text-3xl">Eletrocardiógrafo {{model.nome}}</h3>
+            <div class="lg:flex mt-7 justify-between w-full space-y-10 lg:space-y-0">
+                <div class="space-y-3">
+                    {% for support_content in model.conteudos_apoio %}
+                    {% for file in support_content.arquivos_conteudo_apoio %}
+                    <button class="flex items-center hover:bg-[#065991] bg-[#0073BE] px-3 py-2 rounded hover:scale-90 transition duration-200 space-x-2">
+                        <a href="{{file.arquivo}}" class="flex items-center space-x-2">
+                            <div class="bg-white p-2 rounded-lg">
+                                {{support_content.icone|safe}}
+                            </div>
+                            <div>
+                                <p class="text-white">{{support_content.nome}}</p>
+                                <p class="text-xs text-blue-400">Download do Software</p>
+                            </div>
+                        </a>
+                    </button>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+                {% for product in model.produtos %} 
+                {% for video in product.videos_produto %}
+                <div>
+                    <h4 class="pb-5">{{video.label}}</h4>
+                    <iframe width="395" height="222" src="{{video.video_url}}" title="{{video.label}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- GUIAS -->
+    <div class="border-t-2 border-blue-600 py-10 lg:py-16">
+        <h2 class="text-5xl text-blue-600">Guia Rápido</h2>
+        <div class="mt-10 space-y-4">
+            
+
+            <template x-for="(guide,index) in guides">
+            <div @click.away = "show_guide_list[index] = false">
+                <div @click="show_guide_list[index] = !show_guide_list[index] " class="hover:cursor-pointer w-full flex items-center justify-between border-2 border-blue-700 p-4 transition duration-300" :class="show_guide_list[index] ? 'bg-blue-700 text-white' : ''">
+                    <p x-text="guide.nome" class="font-semibold text-lg"></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 transition-transform duration-200" :class="show_guide_list[index] ? 'rotate-90' : ''">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                </div>
+                <div x-cloak x-show="show_guide_list[index]"
+                x-transition:enter="transition ease-out duration-200 transform origin-top"
+                x-transition:enter-start="opacity-0 scale-y-0"
+                x-transition:enter-end="opacity-40 scale-y-40"
+                x-transition:leave="transition ease-in duration-200 transform origin-top"
+                x-transition:leave-start="opacity-40 scale-y-40"
+                x-transition:leave-end="opacity-0 scale-y-0">
+                    <template x-for="files in guide.arquivos_conteudo_apoio">
+                        <a :href="files.arquivo" class="flex items-center border-2 border-blue-700 p-4 space-x-2">
+                            <i class="far fa-file-pdf text-red-600 text-3xl"></i>
+                            <p x-text="files.nome_arquivo" class=""></p>
+                        </a>
+                    </template>
+                </div>
+            </div>
+            </template>
+        </div>
+    </div>
+
+    <div class="border-t-2 border-blue-600 py-10 lg:py-16">
+        <h2 class="text-5xl text-blue-600">Autorizadas</h2>
+        <div class="mt-10">
+            <!-- BOTÕES -->
+            <div class="lg:flex lg:space-x-[1px]">
+                <div>
+                    <button @click="AC = true , AM = false" class="flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full" :class="AC ? 'bg-white border-b-transparent' : 'bg-gray-200'">
+                        <p>AC</p>
+                    </button>
+                    <!-- CARD MOBILE DE ASSISTENCIAS DO AC  -->
+                    <div x-cloak x-show="AC" class="block lg:hidden border px-5 py-2 space-y-3">
+                        <h2 class="text-2xl">Acre</h2>
+                        <!-- AQUI VAI O FOR DE ASSISTENCIAS -->
+                        <div class="space-y-1 border-2 p-3 rounded shadow">
+                            <div class="flex space-x-1">
+                                <label for="Nome" class="text-sm text-blue-600">Nome:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">J. G P Engenharia</p>
+                                </div>
+                            </div>
+                    
+                            <div class="flex space-x-1">
+                                <label for="Telefone" class="text-sm text-blue-600">Telefone:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">(68) 3224-1415</p>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-1">
+                                <label for="Endereço" class="text-sm text-blue-600">Endereço:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">R. Dama da Noite, 795</p>
+                                </div>
+                            </div>
+
+                            <div class="w-full space-x-3 flex">
+                                <div class="flex space-x-1">
+                                    <label for="Cidade" class="text-sm text-blue-600">Cidade:</label>
+                                    <div>
+                                        <p class="text-sm text-gray-600">RIO BRANCO</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-1">
+                                    <label for="uf" class="text-sm text-blue-600">UF:</label>
+                                    <div>
+                                        <p class="text-sm text-gray-600">AC</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-1">
+                                <label for="CEP" class="text-sm text-blue-600">CEP:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">69901-248</p>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-2">
+                                <label for="E-mail" class="text-sm text-blue-600">E-mail:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">pacheco@jgpengenhariaclinica.com.br</p>
+                                </div>
+                            </div>
+                        
+                            <div class="flex space-x-2">
+                                <label for="Site" class="text-sm text-blue-600">Site:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">www.jpengenhariaclinica.com.br</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button @click="AC = false, AM = true" class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full" :class="AM ? 'bg-white border-b-transparent' : 'bg-gray-200'">
+                        <p>AM</p>
+                    </button>
+                     <!-- CARD MOBILE DE ASSISTENCIAS DO AM  -->
+                    <div x-cloak x-show="AM" class="block lg:hidden border px-5 py-2 space-y-3">
+                        <h2 class="text-2xl">Amazonas</h2>
+                        <!-- AQUI VAI O FOR DE ASSISTENCIAS -->
+                        <div class="space-y-1 border-2 p-3 rounded shadow">
+                            <div class="flex space-x-1">
+                                <label for="Nome" class="text-sm text-blue-600">Nome:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">A.M. Tecnologia Ltda – Epp</p>
+                                </div>
+                            </div>
+                    
+                            <div class="flex space-x-1">
+                                <label for="Telefone" class="text-sm text-blue-600">Telefone:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">(92) 99446-4900</p>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-1">
+                                <label for="Endereço" class="text-sm text-blue-600">Endereço:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">Av. Joaquim Nabuco, 2225 – Centro</p>
+                                </div>
+                            </div>
+
+                            <div class="w-full space-x-3 flex">
+                                <div class="flex space-x-1">
+                                    <label for="Cidade" class="text-sm text-blue-600">Cidade:</label>
+                                    <div>
+                                        <p class="text-sm text-gray-600">MANAUS</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-1">
+                                    <label for="uf" class="text-sm text-blue-600">UF:</label>
+                                    <div>
+                                        <p class="text-sm text-gray-600">AM</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-1">
+                                <label for="CEP" class="text-sm text-blue-600">CEP:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">69020-031</p>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-2">
+                                <label for="E-mail" class="text-sm text-blue-600">E-mail:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">atendimento.amtec@arrodriguez.com.br</p>
+                                </div>
+                            </div>
+                        
+                            <div class="flex space-x-2">
+                                <label for="Site" class="text-sm text-blue-600">Site:</label>
+                                <div>
+                                    <p class="text-sm text-gray-600">www.arrodriguez.com.br</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>BA</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>CE</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>DF</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>ES</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>GO</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>MG</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>MS</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>PB</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>PE</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>PI</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>PR</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>RJ</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>RO</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>RS</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>SC</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>SP</p>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
+                        <p>TO</p>
+                    </button>
+                </div>
+            </div>
+            <!-- TABELA DESKTOP  -->
+            <div class="hidden lg:block">
+                <!-- ACRE  -->
+                <div x-cloak x-show="AC" class=" py-4 w-full">
+                    <h2 class="text-3xl">Acre</h2>
+                    <div>
+                        <table class="table-auto border mt-2">
+                            <thead class="text-blue-600 text-[13px]">
+                                <th class="border border-gray-300 p-3">Nome</th>
+                                <th class="border border-gray-300 p-3">Telefone</th>
+                                <th class="border border-gray-300 p-3">E-mail</th>
+                                <th class="border border-gray-300 p-3">Site</th>
+                                <th class="border border-gray-300 p-3">Endereço</th>
+                                <th class="border border-gray-300 p-3">CEP</th>
+                                <th class="border border-gray-300 p-3">Cidade</th>
+                                <th class="border border-gray-300 p-3">UF</th>
+                            </thead>
+                            <tbody>
+                                <tr class="text-sm">
+                                    <th class="border border-gray-300 p-3 font-normal">J. G P Engenharia</th>
+                                    <th class="border border-gray-300 p-3 font-normal">(68) 3224-1415</th>
+                                    <th class="border border-gray-300 p-3 font-normal">pacheco@jgpengenhariaclinica.com.br</th>
+                                    <th class="border border-gray-300 p-3 font-normal">www.jpengenhariaclinica.com.br</th>
+                                    <th class="border border-gray-300 p-3 font-normal">R. Dama da Noite, 795</th>
+                                    <th class="border border-gray-300 p-3 font-normal">69901-248</th>
+                                    <th class="border border-gray-300 p-3 font-normal">RIO BRANCO</th>
+                                    <th class="border border-gray-300 p-3 font-normal">AC</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- AMAZONAS  -->
+                <div x-cloak x-show="AM" class=" py-4 w-full">
+                    <h2 class="text-3xl">Amazonas</h2>
+                    <div>
+                        <table class="table-auto border mt-2">
+                            <thead class="text-blue-600 text-[13px]">
+                                <th class="border border-gray-300 p-3">Nome</th>
+                                <th class="border border-gray-300 p-3">Telefone</th>
+                                <th class="border border-gray-300 p-3">E-mail</th>
+                                <th class="border border-gray-300 p-3">Site</th>
+                                <th class="border border-gray-300 p-3">Endereço</th>
+                                <th class="border border-gray-300 p-3">CEP</th>
+                                <th class="border border-gray-300 p-3">Cidade</th>
+                                <th class="border border-gray-300 p-3">UF</th>
+                            </thead>
+                            <tbody>
+                                <tr class="text-sm">
+                                    <th class="border border-gray-300 p-3 font-normal">A.M. Tecnologia Ltda – Epp</th>
+                                    <th class="border border-gray-300 p-3 font-normal">(92) 99446-4900</th>
+                                    <th class="border border-gray-300 p-3 font-normal">atendimento.amtec@arrodriguez.com.br</th>
+                                    <th class="border border-gray-300 p-3 font-normal">www.arrodriguez.com.br</th>
+                                    <th class="border border-gray-300 p-3 font-normal">Av. Joaquim Nabuco, 2225 – Centro</th>
+                                    <th class="border border-gray-300 p-3 font-normal">69020-031</th>
+                                    <th class="border border-gray-300 p-3 font-normal">MANAUS</th>
+                                    <th class="border border-gray-300 p-3 font-normal">AM</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+           
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}
