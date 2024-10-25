@@ -9,7 +9,7 @@ from core.models import BaseModel
 class Modelo(BaseModel):
     
     nome = models.CharField('Modelo', unique=True, blank=False, null=False, max_length=64)
-    apresentacao = models.CharField('Apresentação do modelo', blank=True, null=True, max_length=512)
+    apresentacao = models.CharField('Apresentação do modelo', blank=True, null=True, max_length=1024)
     especificacoes = HTMLField('Especificações do produto', blank=True, null=True)
     slug = models.SlugField('Slug do modelo', blank=True, null=True, max_length=64)
     imagem_principal = models.URLField('Imagem principal do modelo', blank=False, null=False, max_length=256)
