@@ -34,6 +34,9 @@ class Modelo(BaseModel):
     
     def get_conteudos_apoio(self):
         return self.conteudos_apoio.all()
+    
+    def get_conteudos_apoio_by_name(self, name : str):
+        return self.conteudos_apoio.filter(nome__icontains=name)
 
     def get_produtos(self):
         return self.produtos.all()

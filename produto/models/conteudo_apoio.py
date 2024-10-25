@@ -7,6 +7,7 @@ from .modelo import Modelo
 
 class ConteudoApoio(BaseModel):
     nome = models.CharField(max_length=64, blank=False, null=False)
+    icone = models.TextField('Ícone HTML', default='', blank=True, null=True)
     modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE, related_name='conteudos_apoio', null=True, blank=True)
     para_vet = models.BooleanField(default=False)
 
