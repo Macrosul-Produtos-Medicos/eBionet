@@ -16,4 +16,4 @@ class ArquivoConteudoApoio(BaseModel):
         verbose_name_plural = 'Arquivos de conteúdos de apoio'
 
     def __str__(self):
-        return f'{self.titulo_arquivo}'
+        return f'Arquivo - {self.pk}'
