@@ -21,8 +21,8 @@ class Produto(BaseModel):
         return f"{self.nome}"
     
     class Meta:
-        verbose_name = 'Modelo'
-        verbose_name_plural = 'Modelos'
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'
         
     def save(self, *args, **kwargs):
         self.slug = slugify(self.nome)
