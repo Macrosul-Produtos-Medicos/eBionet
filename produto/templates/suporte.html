@@ -90,294 +90,125 @@
         <div class="mt-10">
             <!-- BOTÕES -->
             <div class="lg:flex lg:space-x-[1px]">
-                <div>
-                    <button @click="AC = true , AM = false" class="flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full" :class="AC ? 'bg-white border-b-transparent' : 'bg-gray-200'">
-                        <p>AC</p>
-                    </button>
-                    <!-- CARD MOBILE DE ASSISTENCIAS DO AC  -->
-                    <div x-cloak x-show="AC" class="block lg:hidden border px-5 py-2 space-y-3">
-                        <h2 class="text-2xl">Acre</h2>
-                        <!-- AQUI VAI O FOR DE ASSISTENCIAS -->
-                        <div class="space-y-1 border-2 p-3 rounded shadow">
-                            <div class="flex space-x-1">
-                                <label for="Nome" class="text-sm text-blue-600">Nome:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">J. G P Engenharia</p>
-                                </div>
-                            </div>
+
+                <template x-for="(assistance, index) in assistances">
                     
-                            <div class="flex space-x-1">
-                                <label for="Telefone" class="text-sm text-blue-600">Telefone:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">(68) 3224-1415</p>
-                                </div>
-                            </div>
-
-                            <div class="flex space-x-1">
-                                <label for="Endereço" class="text-sm text-blue-600">Endereço:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">R. Dama da Noite, 795</p>
-                                </div>
-                            </div>
-
-                            <div class="w-full space-x-3 flex">
-                                <div class="flex space-x-1">
-                                    <label for="Cidade" class="text-sm text-blue-600">Cidade:</label>
-                                    <div>
-                                        <p class="text-sm text-gray-600">RIO BRANCO</p>
+                    <div>
+                        <button @click="show_states_list[index] = true; closesTabs(index)" class="flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full" :class="show_states_list[index] ? 'bg-white border-b-transparent' : 'bg-gray-200'">
+                            <p x-text="assistance.estado"></p>
+                        </button>
+                        <!-- CARD MOBILE DE ASSISTENCIAS DO AC  -->
+                        <div x-cloak x-show="show_states_list[index]" class="block lg:hidden border px-5 py-2 space-y-3">
+                            <h2 x-text="assistance.estado" class="text-2xl"></h2>
+                            
+                            <template x-for="(item_assistencia, index) in assistance.itens">
+                                <div class="space-y-1 border-2 p-3 rounded shadow">
+                                
+                                
+                                    <div class="flex space-x-1">
+                                        <label for="Nome" class="text-sm text-blue-600">Nome:</label>
+                                        <div>
+                                            <p x-text="item_assistencia.nome_assistencia" class="text-sm text-gray-600"></p>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="flex space-x-1">
+                                        <label for="Telefone" class="text-sm text-blue-600">Telefone:</label>
+                                        <div>
+                                            <p x-text="item_assistencia.telefone_assistencia" class="text-sm text-gray-600"></p>
+                                        </div>
+                                    </div>
+        
+                                    <div class="flex space-x-1">
+                                        <label for="Endereço" class="text-sm text-blue-600">Endereço:</label>
+                                        <div>
+                                            <p x-text="item_assistencia.endereco_completo_assistencia" class="text-sm text-gray-600"></p>
+                                        </div>
+                                    </div>
+        
+                                    <div class="w-full space-x-3 flex">
+                                        <div class="flex space-x-1">
+                                            <label for="Cidade" class="text-sm text-blue-600">Cidade:</label>
+                                            <div>
+                                                <p x-text="item_assistencia.cidade_assistencia" class="text-sm text-gray-600"></p>
+                                            </div>
+                                        </div>
+        
+                                        <div class="flex space-x-1">
+                                            <label for="uf" class="text-sm text-blue-600">UF:</label>
+                                            <div>
+                                                <p x-text="item_assistencia.estado_abrev_assistencia" class="text-sm text-gray-600"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="flex space-x-1">
+                                        <label for="CEP" class="text-sm text-blue-600">CEP:</label>
+                                        <div>
+                                            <p x-text="item_assistencia.cep_assistencia" class="text-sm text-gray-600"></p>
+                                        </div>
+                                    </div>
+        
+                                    <div class="flex space-x-2">
+                                        <label for="E-mail" class="text-sm text-blue-600">E-mail:</label>
+                                        <div>
+                                            <p x-text="item_assistencia.email_assistencia" class="text-sm text-gray-600"></p>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="flex space-x-2">
+                                        <label for="Site" class="text-sm text-blue-600">Site:</label>
+                                        <div>
+                                            <p x-text="item_assistencia.site_assistencia" class="text-sm text-gray-600"></p>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="flex space-x-1">
-                                    <label for="uf" class="text-sm text-blue-600">UF:</label>
-                                    <div>
-                                        <p class="text-sm text-gray-600">AC</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex space-x-1">
-                                <label for="CEP" class="text-sm text-blue-600">CEP:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">69901-248</p>
-                                </div>
-                            </div>
-
-                            <div class="flex space-x-2">
-                                <label for="E-mail" class="text-sm text-blue-600">E-mail:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">pacheco@jgpengenhariaclinica.com.br</p>
-                                </div>
-                            </div>
-                        
-                            <div class="flex space-x-2">
-                                <label for="Site" class="text-sm text-blue-600">Site:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">www.jpengenhariaclinica.com.br</p>
-                                </div>
-                            </div>
+                            </template>  
+                            <!-- AQUI VAI O FOR DE ASSISTENCIAS -->
                         </div>
                     </div>
-                </div>
-                <div>
-                    <button @click="AC = false, AM = true" class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full" :class="AM ? 'bg-white border-b-transparent' : 'bg-gray-200'">
-                        <p>AM</p>
-                    </button>
-                     <!-- CARD MOBILE DE ASSISTENCIAS DO AM  -->
-                    <div x-cloak x-show="AM" class="block lg:hidden border px-5 py-2 space-y-3">
-                        <h2 class="text-2xl">Amazonas</h2>
-                        <!-- AQUI VAI O FOR DE ASSISTENCIAS -->
-                        <div class="space-y-1 border-2 p-3 rounded shadow">
-                            <div class="flex space-x-1">
-                                <label for="Nome" class="text-sm text-blue-600">Nome:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">A.M. Tecnologia Ltda – Epp</p>
-                                </div>
-                            </div>
-                    
-                            <div class="flex space-x-1">
-                                <label for="Telefone" class="text-sm text-blue-600">Telefone:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">(92) 99446-4900</p>
-                                </div>
-                            </div>
+                </template>
 
-                            <div class="flex space-x-1">
-                                <label for="Endereço" class="text-sm text-blue-600">Endereço:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">Av. Joaquim Nabuco, 2225 – Centro</p>
-                                </div>
-                            </div>
-
-                            <div class="w-full space-x-3 flex">
-                                <div class="flex space-x-1">
-                                    <label for="Cidade" class="text-sm text-blue-600">Cidade:</label>
-                                    <div>
-                                        <p class="text-sm text-gray-600">MANAUS</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex space-x-1">
-                                    <label for="uf" class="text-sm text-blue-600">UF:</label>
-                                    <div>
-                                        <p class="text-sm text-gray-600">AM</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex space-x-1">
-                                <label for="CEP" class="text-sm text-blue-600">CEP:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">69020-031</p>
-                                </div>
-                            </div>
-
-                            <div class="flex space-x-2">
-                                <label for="E-mail" class="text-sm text-blue-600">E-mail:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">atendimento.amtec@arrodriguez.com.br</p>
-                                </div>
-                            </div>
-                        
-                            <div class="flex space-x-2">
-                                <label for="Site" class="text-sm text-blue-600">Site:</label>
-                                <div>
-                                    <p class="text-sm text-gray-600">www.arrodriguez.com.br</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>BA</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>CE</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>DF</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>ES</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>GO</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>MG</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>MS</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>PB</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>PE</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>PI</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>PR</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>RJ</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>RO</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>RS</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>SC</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>SP</p>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-gray-200 flex items-center justify-center p-3 px-5 rounded-t border border-gray-300 text-gray-600 text-sm  w-full">
-                        <p>TO</p>
-                    </button>
-                </div>
             </div>
             <!-- TABELA DESKTOP  -->
             <div class="hidden lg:block">
                 <!-- ACRE  -->
-                <div x-cloak x-show="AC" class=" py-4 w-full">
-                    <h2 class="text-3xl">Acre</h2>
-                    <div>
-                        <table class="table-auto border mt-2">
-                            <thead class="text-blue-600 text-[13px]">
-                                <th class="border border-gray-300 p-3">Nome</th>
-                                <th class="border border-gray-300 p-3">Telefone</th>
-                                <th class="border border-gray-300 p-3">E-mail</th>
-                                <th class="border border-gray-300 p-3">Site</th>
-                                <th class="border border-gray-300 p-3">Endereço</th>
-                                <th class="border border-gray-300 p-3">CEP</th>
-                                <th class="border border-gray-300 p-3">Cidade</th>
-                                <th class="border border-gray-300 p-3">UF</th>
-                            </thead>
-                            <tbody>
-                                <tr class="text-sm">
-                                    <th class="border border-gray-300 p-3 font-normal">J. G P Engenharia</th>
-                                    <th class="border border-gray-300 p-3 font-normal">(68) 3224-1415</th>
-                                    <th class="border border-gray-300 p-3 font-normal">pacheco@jgpengenhariaclinica.com.br</th>
-                                    <th class="border border-gray-300 p-3 font-normal">www.jpengenhariaclinica.com.br</th>
-                                    <th class="border border-gray-300 p-3 font-normal">R. Dama da Noite, 795</th>
-                                    <th class="border border-gray-300 p-3 font-normal">69901-248</th>
-                                    <th class="border border-gray-300 p-3 font-normal">RIO BRANCO</th>
-                                    <th class="border border-gray-300 p-3 font-normal">AC</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
 
-                </div>
-                <!-- AMAZONAS  -->
-                <div x-cloak x-show="AM" class=" py-4 w-full">
-                    <h2 class="text-3xl">Amazonas</h2>
-                    <div>
-                        <table class="table-auto border mt-2">
-                            <thead class="text-blue-600 text-[13px]">
-                                <th class="border border-gray-300 p-3">Nome</th>
-                                <th class="border border-gray-300 p-3">Telefone</th>
-                                <th class="border border-gray-300 p-3">E-mail</th>
-                                <th class="border border-gray-300 p-3">Site</th>
-                                <th class="border border-gray-300 p-3">Endereço</th>
-                                <th class="border border-gray-300 p-3">CEP</th>
-                                <th class="border border-gray-300 p-3">Cidade</th>
-                                <th class="border border-gray-300 p-3">UF</th>
-                            </thead>
-                            <tbody>
-                                <tr class="text-sm">
-                                    <th class="border border-gray-300 p-3 font-normal">A.M. Tecnologia Ltda – Epp</th>
-                                    <th class="border border-gray-300 p-3 font-normal">(92) 99446-4900</th>
-                                    <th class="border border-gray-300 p-3 font-normal">atendimento.amtec@arrodriguez.com.br</th>
-                                    <th class="border border-gray-300 p-3 font-normal">www.arrodriguez.com.br</th>
-                                    <th class="border border-gray-300 p-3 font-normal">Av. Joaquim Nabuco, 2225 – Centro</th>
-                                    <th class="border border-gray-300 p-3 font-normal">69020-031</th>
-                                    <th class="border border-gray-300 p-3 font-normal">MANAUS</th>
-                                    <th class="border border-gray-300 p-3 font-normal">AM</th>
-                                </tr>
-                            </tbody>
-                        </table>
+                <template x-for="(assistance, index) in assistances">
+                    <div x-cloak x-show="show_states_list[index]" x-transition class="py-4 w-full">
+                        <h2 x-text="assistance.estado" class="text-3xl"></h2>
+                        <div>
+                            <table class="table-auto border mt-2">
+                                <thead class="text-blue-600 text-[13px]">
+                                    <th class="border border-gray-300 p-3">Nome</th>
+                                    <th class="border border-gray-300 p-3">Telefone</th>
+                                    <th class="border border-gray-300 p-3">Endereço</th>
+                                    <th class="border border-gray-300 p-3">Cidade</th>
+                                    <th class="border border-gray-300 p-3">UF</th>
+                                    <th class="border border-gray-300 p-3">CEP</th>
+                                    <th class="border border-gray-300 p-3">E-mail</th>
+                                    <th class="border border-gray-300 p-3">Site</th>
+                                </thead>
+                                <tbody>
+                                    <template x-for="(item_assistencia, index) in assistance.itens">
+                                        <tr class="text-sm">
+                                            <th x-text="item_assistencia.nome_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.telefone_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.endereco_completo_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.cidade_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.estado_abrev_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.cep_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.email_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                            <th x-text="item_assistencia.site_assistencia" class="border border-gray-300 p-3 font-normal"></th>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+    
                     </div>
+                </template>
 
-                </div>
             </div>
            
 
